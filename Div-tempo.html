@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <style>
+    /* Estilos para posicionar o relógio no meio da página */
+    #txt {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 4em; /* Tamanho dos números aumentado */
+    }
+    </style>
+    <script type="text/javascript">
+    function startTime() {
+      var today = new Date();
+      var h = today.getHours();
+      var m = today.getMinutes();
+      var s = today.getSeconds();
+      // Adiciona um zero na frente dos números < 10
+      m = checkTime(m);
+      s = checkTime(s);
+      return h + ":" + m + ":" + s;
+    }
+    
+    function checkTime(i) {
+      if (i < 10) {
+        i = "0" + i;
+      }
+      return i;
+    }
+    
+    // Inicializa o relógio assim que a página carrega
+    window.onload = function() {
+      document.getElementById('txt').innerHTML = startTime();
+      setInterval(function() {
+        document.getElementById('txt').innerHTML = startTime();
+      }, 500); // Atualiza o relógio a cada 500 milissegundos
+    };
+    </script>
+    </head>
+    <body>
+    
+    <div id="txt"></div>
+    
+    </body>
+    </html>
+    
+</body>
+</html>
